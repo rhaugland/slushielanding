@@ -1,0 +1,7 @@
+{
+  "name": "slushie-landing",
+  "private": true,
+  "scripts": {
+    "start": "npx serve . -s -l tcp://0.0.0.0:${PORT:-3000}"
+  }
+}
