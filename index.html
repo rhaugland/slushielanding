@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="We build the operating system your business should have come with. For $1M–$50M businesses that outgrew their software." />
+  <title>Slushie — The Operating System Your Business Should Have Come With</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Design Tokens ─────────────────────────────────────── */
+    :root {
+      --bg:        #0f1729;
+      --surface:   #1e293b;
+      --border:    #334155;
+      --text:      #f1f5f9;
+      --muted:     #94a3b8;
+      --dim:       #64748b;
+      --faint:     #475569;
+      --red:       #ef4444;
+      --blue:      #3b82f6;
+      --gradient:  linear-gradient(135deg, #ef4444, #3b82f6);
+      --max-w:     1100px;
+      --px:        48px;
+    }
+
+    /* ─── Reset & Base ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    ::selection {
+      background: rgba(59, 130, 246, 0.3);
+      color: var(--text);
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Layout Utility ────────────────────────────────────── */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--px);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ─── Gradient Text ─────────────────────────────────────── */
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─── Gradient Button ───────────────────────────────────── */
+    .btn-gradient {
+      display: inline-block;
+      background: var(--gradient);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+    .btn-gradient:hover { opacity: 0.9; }
+
+    /* ─── Section Labels ────────────────────────────────────── */
+    .label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .label--red  { color: var(--red); }
+    .label--blue { color: var(--blue); }
+
+    /* ══════════════════════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════════════════════ */
+    .nav {
+      padding: 24px 0;
+    }
+    .nav .container {
+      display: flex;
+      align-items: center;
+    }
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 900;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════════════════════ */
+    .hero {
+      padding: 80px 0 96px;
+      text-align: center;
+    }
+    .hero .label {
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 em {
+      font-style: normal;
+    }
+    .hero-sub {
+      font-size: 1.125rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       PROBLEM
+    ══════════════════════════════════════════════════════════ */
+    .problem {
+      padding: 80px 0 96px;
+    }
+    .problem-header {
+      margin-bottom: 56px;
+    }
+    .problem-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+    }
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .card h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .card p {
+      color: var(--muted);
+      font-size: 0.9375rem;
+      line-height: 1.7;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       HOW IT WORKS
+    ══════════════════════════════════════════════════════════ */
+    .how {
+      padding: 80px 0 96px;
+    }
+    .how-header {
+      max-width: 760px;
+      margin-bottom: 56px;
+    }
+    .how-header h2 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+    .how-header p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* Contrast cards */
+    .contrast-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .contrast-card {
+      border-radius: 12px;
+      padding: 32px;
+      border: 1px solid var(--border);
+    }
+    .contrast-card--red {
+      background: rgba(239, 68, 68, 0.06);
+      border-color: rgba(239, 68, 68, 0.2);
+    }
+    .contrast-card--blue {
+      background: rgba(59, 130, 246, 0.06);
+      border-color: rgba(59, 130, 246, 0.2);
+    }
+    .contrast-card h3 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .contrast-card--red h3 { color: var(--red); }
+    .contrast-card--blue h3 { color: var(--blue); }
+    .contrast-card .tagline {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+    .contrast-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .contrast-card ul li {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .contrast-card ul li .icon {
+      flex-shrink: 0;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+    .contrast-card--red .icon { color: var(--red); }
+    .contrast-card--blue .icon { color: var(--blue); }
+
+    /* Banana callout */
+    .banana-callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px;
+      display: flex;
+      align-items: flex-start;
+      gap: 32px;
+      margin-bottom: 64px;
+    }
+    .banana-callout .banana-icon {
+      font-size: 3rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .banana-callout .banana-body h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .banana-callout .banana-body p {
+      color: var(--muted);
+      font-size: 0.9375rem;
+      line-height: 1.8;
+    }
+    .banana-callout .banana-body p strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    /* Steps */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .step-number {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      opacity: 0.3;
+    }
+    .step-content h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .step-content p {
+      color: var(--muted);
+      font-size: 0.9375rem;
+      line-height: 1.7;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       CTA SECTION
+    ══════════════════════════════════════════════════════════ */
+    .cta-section {
+      padding: 80px 0 96px;
+    }
+    .cta-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .cta-inner h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .cta-inner .cta-sub {
+      font-size: 1.0625rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+    .cta-inner .cta-trust {
+      font-size: 0.875rem;
+      color: var(--dim);
+      margin-bottom: 48px;
+      line-height: 1.6;
+    }
+
+    /* Form */
+    .cta-form {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .form-group input,
+    .form-group textarea {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9375rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+      width: 100%;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--faint);
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+    .form-submit {
+      text-align: center;
+    }
+    .form-submit .btn-gradient {
+      font-size: 1.0625rem;
+      padding: 16px 36px;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════════════ */
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .footer p {
+      color: var(--dim);
+      font-size: 0.875rem;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       RESPONSIVE — 768px
+    ══════════════════════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      :root { --px: 24px; }
+
+      .hero { padding: 56px 0 72px; }
+      .hero h1 { font-size: 36px; }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contrast-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .banana-callout {
+        flex-direction: column;
+        gap: 20px;
+        padding: 28px;
+      }
+
+      .step {
+        grid-template-columns: 60px 1fr;
+        gap: 16px;
+      }
+      .step-number { font-size: 2.75rem; }
+
+      .how-header h2 { font-size: 1.75rem; }
+      .problem-header h2 { font-size: 2rem; }
+      .cta-inner h2 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       NAV
+  ═══════════════════════════════════════ -->
+  <nav class="nav">
+    <div class="container">
+      <a href="/" class="nav-logo gradient-text">slushie.</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+  <section class="hero">
+    <div class="container">
+      <p class="label label--red">For $1M–$50M businesses that outgrew their software</p>
+      <h1>Your business is smarter than <em class="gradient-text">your software.</em></h1>
+      <p class="hero-sub">You know things your tools don't. We capture that intelligence and build it into a system that actually fits how you work — starting with whatever hurts most.</p>
+      <a href="#cta" class="btn-gradient">Tell us what's broken →</a>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ══════════════════════════════════════
+       PROBLEM
+  ═══════════════════════════════════════ -->
+  <section class="problem">
+    <div class="container">
+      <div class="problem-header">
+        <p class="label label--red">Traditional SaaS</p>
+        <h2>Built for everyone. Fits no one.</h2>
+      </div>
+      <div class="cards-grid">
+        <div class="card">
+          <span class="card-icon">📦</span>
+          <h3>Generic by design</h3>
+          <p>Your quoting tool doesn't know your machines. Your CRM doesn't know your sales cycle. You're paying for software built for the average business — and you're not average.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">🏝️</span>
+          <h3>Islands everywhere</h3>
+          <p>Your tools don't talk to each other. Data lives in five places. Your team re-enters the same information into three systems and still gets it wrong.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">🧠</span>
+          <h3>Tribal knowledge runs the show</h3>
+          <p>The real expertise is in your people's heads — not in your software. When they're busy, on vacation, or gone, so is everything they know.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ══════════════════════════════════════
+       HOW IT WORKS
+  ═══════════════════════════════════════ -->
+  <section class="how">
+    <div class="container">
+      <div class="how-header">
+        <p class="label label--blue">Our Approach</p>
+        <h2>Most companies would tell you to rip it all out and start over. We won't.</h2>
+        <p>Complete overhauls sound decisive. In practice, they bring too many moving parts, too much risk, and a team that can't find anything for six months. We take a different approach.</p>
+      </div>
+
+      <!-- Contrast cards -->
+      <div class="contrast-grid">
+        <div class="contrast-card contrast-card--red">
+          <h3>The typical playbook</h3>
+          <p class="tagline">"Let's rebuild everything."</p>
+          <ul>
+            <li><span class="icon">✕</span> 6-month timeline before anything works</li>
+            <li><span class="icon">✕</span> Your team relearns everything at once</li>
+            <li><span class="icon">✕</span> One wrong assumption derails the whole project</li>
+            <li><span class="icon">✕</span> Massive upfront cost, uncertain payoff</li>
+          </ul>
+        </div>
+        <div class="contrast-card contrast-card--blue">
+          <h3>The Slushie approach</h3>
+          <p class="tagline">"Let's fix the thing that hurts most. Today."</p>
+          <ul>
+            <li><span class="icon">→</span> Start with one problem, prove the value</li>
+            <li><span class="icon">→</span> Your team's workflow barely changes — at first</li>
+            <li><span class="icon">→</span> Each step is small enough to reverse if needed</li>
+            <li><span class="icon">→</span> You see results before you see an invoice</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Banana callout -->
+      <div class="banana-callout">
+        <span class="banana-icon">🍌</span>
+        <div class="banana-body">
+          <h3>The banana problem</h3>
+          <p>You know that moment when the grocery store moves the bananas? You've shopped there for years, and suddenly nothing is where it should be. It's small, but it's disorienting. <strong>Most software overhauls do this to your entire business at once.</strong> Every screen changes. Every workflow breaks. Every person on your team is suddenly slower at their job. We think that's avoidable. Move one thing at a time. Let people adjust. Then move the next thing.</p>
+        </div>
+      </div>
+
+      <!-- Steps -->
+      <div class="steps">
+        <div class="step">
+          <div class="step-number gradient-text">01</div>
+          <div class="step-content">
+            <h3>One inch forward</h3>
+            <p>We find the single biggest pain point and build a targeted fix. Not a platform. Not a roadmap. One thing that moves the ball forward — and proves the approach works.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number gradient-text">02</div>
+          <div class="step-content">
+            <h3>Then the next inch</h3>
+            <p>Once the first piece is working and your team trusts it, we connect it to the next system. Each step is small enough that nobody has to relearn their job overnight.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number gradient-text">03</div>
+          <div class="step-content">
+            <h3>Until it's an operating system</h3>
+            <p>Inch by inch, the hub grows. Before long, your disconnected tools are a single intelligent system — and your team barely noticed the transition because it happened one piece at a time.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ══════════════════════════════════════
+       CTA
+  ═══════════════════════════════════════ -->
+  <section class="cta-section" id="cta">
+    <div class="container">
+      <div class="cta-inner">
+        <h2>Tell us what's broken.</h2>
+        <p class="cta-sub">No sales pitch. No 47-slide deck. Just tell us what's not working and we'll tell you if we can fix it.</p>
+        <p class="cta-trust">We're a small team that builds and ships. No account managers. No offshore handoffs. You talk to the people who write the code.</p>
+        <form class="cta-form" action="#" method="POST">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@company.com" required />
+          </div>
+          <div class="form-group">
+            <label for="broken">What's broken?</label>
+            <textarea id="broken" name="broken" placeholder="Our quoting software is costing us deals... / We have 6 tools that don't talk to each other... / My best employee is also my most expensive spreadsheet..." required></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn-gradient">Send it →</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <p>slushie. © 2026</p>
+    </div>
+  </footer>
+
+</body>
+</html>
