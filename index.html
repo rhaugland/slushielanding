@@ -84,6 +84,10 @@
       transition: opacity 0.2s ease;
     }
     .btn-gradient:hover { opacity: 0.9; }
+    .btn-gradient:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
+    }
 
     /* ─── Section Labels ────────────────────────────────────── */
     .label {
@@ -134,7 +138,7 @@
       margin-left: auto;
       margin-right: auto;
     }
-    .hero h1 em {
+    .hero h1 .gradient-text {
       font-style: normal;
     }
     .hero-sub {
@@ -467,15 +471,17 @@
     </div>
   </nav>
 
+  <main>
+
   <!-- ══════════════════════════════════════
        HERO
   ═══════════════════════════════════════ -->
   <section class="hero">
     <div class="container">
       <p class="label label--red">For $1M–$50M businesses that outgrew their software</p>
-      <h1>Your business is smarter than <em class="gradient-text">your software.</em></h1>
+      <h1>Your business is smarter than <span class="gradient-text">your software.</span></h1>
       <p class="hero-sub">You know things your tools don't. We capture that intelligence and build it into a system that actually fits how you work — starting with whatever hurts most.</p>
-      <a href="#cta" class="btn-gradient">Tell us what's broken →</a>
+      <a href="#cta" class="btn-gradient">Tell us what's broken <span aria-hidden="true">→</span></a>
     </div>
   </section>
 
@@ -492,17 +498,17 @@
       </div>
       <div class="cards-grid">
         <div class="card">
-          <span class="card-icon">📦</span>
+          <span class="card-icon" aria-hidden="true">📦</span>
           <h3>Generic by design</h3>
           <p>Your quoting tool doesn't know your machines. Your CRM doesn't know your sales cycle. You're paying for software built for the average business — and you're not average.</p>
         </div>
         <div class="card">
-          <span class="card-icon">🏝️</span>
+          <span class="card-icon" aria-hidden="true">🏝️</span>
           <h3>Islands everywhere</h3>
           <p>Your tools don't talk to each other. Data lives in five places. Your team re-enters the same information into three systems and still gets it wrong.</p>
         </div>
         <div class="card">
-          <span class="card-icon">🧠</span>
+          <span class="card-icon" aria-hidden="true">🧠</span>
           <h3>Tribal knowledge runs the show</h3>
           <p>The real expertise is in your people's heads — not in your software. When they're busy, on vacation, or gone, so is everything they know.</p>
         </div>
@@ -549,7 +555,7 @@
 
       <!-- Banana callout -->
       <div class="banana-callout">
-        <span class="banana-icon">🍌</span>
+        <span class="banana-icon" aria-hidden="true">🍌</span>
         <div class="banana-body">
           <h3>The banana problem</h3>
           <p>You know that moment when the grocery store moves the bananas? You've shopped there for years, and suddenly nothing is where it should be. It's small, but it's disorienting. <strong>Most software overhauls do this to your entire business at once.</strong> Every screen changes. Every workflow breaks. Every person on your team is suddenly slower at their job. We think that's avoidable. Move one thing at a time. Let people adjust. Then move the next thing.</p>
@@ -609,12 +615,14 @@
             <textarea id="broken" name="broken" placeholder="Our quoting software is costing us deals... / We have 6 tools that don't talk to each other... / My best employee is also my most expensive spreadsheet..." required></textarea>
           </div>
           <div class="form-submit">
-            <button type="submit" class="btn-gradient">Send it →</button>
+            <button type="submit" class="btn-gradient">Send it <span aria-hidden="true">→</span></button>
           </div>
         </form>
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- ══════════════════════════════════════
        FOOTER
