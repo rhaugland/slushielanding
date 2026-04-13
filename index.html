@@ -333,6 +333,99 @@
     }
 
     /* ══════════════════════════════════════════════════════════
+       PRICING
+    ══════════════════════════════════════════════════════════ */
+    .pricing {
+      padding: 80px 0 96px;
+    }
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .pricing-header h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .pricing-header .price {
+      font-size: 3.5rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .pricing-header .price-sub {
+      font-size: 1.125rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .pricing-points {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .pricing-point {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+    }
+    .pricing-point h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .pricing-point p {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .pricing-callout {
+      background: rgba(59, 130, 246, 0.06);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 12px;
+      padding: 40px;
+      display: flex;
+      align-items: flex-start;
+      gap: 32px;
+    }
+    .pricing-callout-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .pricing-callout h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .pricing-callout p {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .pricing-callout p strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .pricing-header .price { font-size: 2.5rem; }
+      .pricing-header h2 { font-size: 2rem; }
+      .pricing-points { grid-template-columns: 1fr; }
+      .pricing-callout {
+        flex-direction: column;
+        gap: 20px;
+        padding: 28px;
+      }
+    }
+
+    /* ══════════════════════════════════════════════════════════
        CTA SECTION
     ══════════════════════════════════════════════════════════ */
     .cta-section {
@@ -587,6 +680,44 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ══════════════════════════════════════
+       PRICING
+  ═══════════════════════════════════════ -->
+  <section class="pricing">
+    <div class="container">
+      <div class="pricing-header">
+        <p class="label label--blue">Pricing</p>
+        <div class="price gradient-text">$5,000/mo</div>
+        <p class="price-sub">No contracts. No catches. Month to month.</p>
+      </div>
+
+      <div class="pricing-points">
+        <div class="pricing-point">
+          <h3>No long-term contracts</h3>
+          <p>Month to month. If we're not delivering value, you should leave. The door is always open — we'd rather earn your business every month than lock you into something you regret.</p>
+        </div>
+        <div class="pricing-point">
+          <h3>No work orders or change fees</h3>
+          <p>We're building your operating system, not billing you per feature. Need to change direction? That's just Tuesday. We adapt to your business, not the other way around.</p>
+        </div>
+        <div class="pricing-point">
+          <h3>No paying for busy work</h3>
+          <p>Anyone can write code and send you an invoice. We don't charge for output — we charge for outcomes. If it doesn't move your business forward, we don't build it.</p>
+        </div>
+      </div>
+
+      <div class="pricing-callout">
+        <span class="pricing-callout-icon" aria-hidden="true">💡</span>
+        <div>
+          <h3>Why this works</h3>
+          <p>Most shops charge per project because it protects <em>them</em>. If the scope was wrong or the project takes longer, you pay more. We charge a flat rate because it protects <strong>you</strong>. Our incentive is to solve your problems as efficiently as possible — not to pad hours or build things you don't need.</p>
+        </div>
+      </div>
     </div>
   </section>
 
